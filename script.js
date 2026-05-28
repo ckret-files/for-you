@@ -200,7 +200,7 @@ function startSequence() {
 
                   await appendMessage(
                     "ai",
-                    "Hang Out, Saturday Afternoon, You & Me.",
+                    "Hang Out, Tomorrow Afternoon, You & Me.",
                   );
                   await sleep(600);
 
@@ -214,7 +214,7 @@ function startSequence() {
                   setChatButtons([
                     {
                       id: "btn-accept",
-                      text: "Accept",
+                      text: "Accept ♥",
                       type: "primary",
                       handler: () =>
                         sendDecisionSequence(
