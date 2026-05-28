@@ -200,7 +200,7 @@ function startSequence() {
 
                   await appendMessage(
                     "ai",
-                    "Hang Out, Tomorrow Afternoon, You & Me.",
+                    "Hang Out, Saturday Afternoon, You & Me.",
                   );
                   await sleep(600);
 
