@@ -218,7 +218,7 @@ function startSequence() {
                       type: "primary",
                       handler: () =>
                         sendDecisionSequence(
-                          "Accept ♥",
+                          "Suree Why Not",
                           "Yaay! Guess I'll message you then :3",
                           "accept.jpg",
                         ),
@@ -229,7 +229,7 @@ function startSequence() {
                       type: "secondary",
                       handler: () =>
                         sendDecisionSequence(
-                          "Decline",
+                          "Thank you for the invite but, I'll have to decline your offer",
                           "All goods now worries. Thank you",
                           "decline.jpg",
                         ),
