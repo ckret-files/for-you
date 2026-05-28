@@ -199,7 +199,7 @@ function startSequence() {
                   // 🌟 HERE IS THE CLICKABLE LINK FOR "Me" 🌟
                   await appendMessage(
                     "ai",
-                    `Hang Out, Tomorrow Afternoon, You & <a href="https://your-profile-or-social-link.com" target="_blank" style="color: #f3727e; font-weight: bold; text-decoration: underline;">Me</a>.`
+                    `Hang Out, Tomorrow Afternoon, You & <a href="https://www.facebook.com/profile.php?id=61584120044411" target="_blank" style="color: #f3727e; font-weight: bold; text-decoration: underline;">Me</a> <- Click to know me :3`
                   );
                   await sleep(600);
 
