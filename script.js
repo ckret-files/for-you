@@ -214,7 +214,7 @@ function startSequence() {
                   setChatButtons([
                     {
                       id: "btn-accept",
-                      text: "Suree Why Not",
+                      text: "Accept",
                       type: "primary",
                       handler: () =>
                         sendDecisionSequence(
@@ -225,7 +225,7 @@ function startSequence() {
                     },
                     {
                       id: "btn-decline",
-                      text: "Thank you for the invite but, I'll have to decline your offer",
+                      text: "Decline",
                       type: "secondary",
                       handler: () =>
                         sendDecisionSequence(
