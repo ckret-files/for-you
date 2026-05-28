@@ -58,7 +58,7 @@ function scrollToBottom() {
 async function appendMessage(sender, text) {
   const bubble = document.createElement("div");
   bubble.className = `chat-bubble ${sender}`;
-  bubble.innerText = text;
+  bubble.innerHTML = text;
   chatContainer.appendChild(bubble);
   scrollToBottom();
 }
@@ -94,11 +94,23 @@ async function setChatButtons(buttons) {
   scrollToBottom();
 }
 
-async function sendDecisionSequence(userChoice, aiReplyText, speed = 800) {
+// Updated with max-width constraint for a cleaner sticker size
+async function sendDecisionSequence(
+  userChoice,
+  aiReplyText,
+  aiReplyImage,
+  speed = 800,
+) {
   setChatButtons(null);
   await appendMessage("user", userChoice);
   await sleep(speed);
   await appendMessage("ai", aiReplyText);
+  await sleep(500);
+  // Send the reaction image scaled down to a maximum of 180px width
+  await appendMessage(
+    "ai",
+    `<img src="${aiReplyImage}" style="max-width: 180px; width: 100%; border-radius: 8px; display: block; margin: 0 auto;">`,
+  );
 }
 
 // --- SEQUENCE LOGIC ---
@@ -147,13 +159,19 @@ function startSequence() {
       await sleep(800);
 
       // SHORT INTRODUCTION BEFORE THE JOKE
-      await appendMessage("ai", `Hey ${rawName}!`);
+      await appendMessage(
+        "ai",
+        `Hiii ${rawName}, I've really wanted to talk to you but I don't know how to do the first move`,
+      );
       await sleep(1500);
-      await appendMessage("ai", "I've been meaning to ask you something...");
+      await appendMessage("ai", "And I'm shy and scared I will make thing awkward soooo -w-");
       await sleep(1800);
-      await appendMessage("ai", "But honestly, I got a bit shy 😅");
+      await appendMessage(
+        "ai",
+        "I tried to make this to make my first move ig? HAHAAHAHHAHA 😅",
+      );
       await sleep(1800);
-      await appendMessage("ai", "btw I have a joke");
+      await appendMessage("ai", "nways I wanna try something");
       await sleep(1200);
 
       // THE JOKE
@@ -180,7 +198,17 @@ function startSequence() {
                   await appendMessage("user", "What When Who?");
                   await sleep(800);
 
-                  await appendMessage("ai", "Running, Tomorrow, Yow & Me.");
+                  await appendMessage(
+                    "ai",
+                    "Hang Out, Tomorrow Afternoon, You & Me.",
+                  );
+                  await sleep(600);
+
+                  // Updated with max-width constraint for a cleaner sticker size
+                  await appendMessage(
+                    "ai",
+                    `<img src="ask.jpg" style="max-width: 180px; width: 100%; border-radius: 8px; display: block; margin: 0 auto;">`,
+                  );
                   await sleep(500);
 
                   setChatButtons([
@@ -191,7 +219,8 @@ function startSequence() {
                       handler: () =>
                         sendDecisionSequence(
                           "Accept ♥",
-                          "Yay! See you then 😊",
+                          "Yaay! Guess I'll message you then :3",
+                          "accept.jpg",
                         ),
                     },
                     {
@@ -201,7 +230,8 @@ function startSequence() {
                       handler: () =>
                         sendDecisionSequence(
                           "Decline",
-                          "Ah, no worries. Thanks anyway!",
+                          "All goods now worries. Thank you",
+                          "decline.jpg",
                         ),
                     },
                   ]);
