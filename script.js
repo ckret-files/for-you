@@ -94,7 +94,6 @@ async function setChatButtons(buttons) {
   scrollToBottom();
 }
 
-// Updated with max-width constraint for a cleaner sticker size
 async function sendDecisionSequence(
   userChoice,
   aiReplyText,
@@ -106,7 +105,6 @@ async function sendDecisionSequence(
   await sleep(speed);
   await appendMessage("ai", aiReplyText);
   await sleep(500);
-  // Send the reaction image scaled down to a maximum of 180px width
   await appendMessage(
     "ai",
     `<img src="${aiReplyImage}" style="max-width: 180px; width: 100%; border-radius: 8px; display: block; margin: 0 auto;">`,
@@ -198,13 +196,13 @@ function startSequence() {
                   await appendMessage("user", "What When Who?");
                   await sleep(800);
 
+                  // 🌟 HERE IS THE CLICKABLE LINK FOR "Me" 🌟
                   await appendMessage(
                     "ai",
-                    "Hang Out, Tomorrow Afternoon, You & Me.",
+                    `Hang Out, Tomorrow Afternoon, You & <a href="https://your-profile-or-social-link.com" target="_blank" style="color: #f3727e; font-weight: bold; text-decoration: underline;">Me</a>.`
                   );
                   await sleep(600);
 
-                  // Updated with max-width constraint for a cleaner sticker size
                   await appendMessage(
                     "ai",
                     `<img src="ask.jpg" style="max-width: 180px; width: 100%; border-radius: 8px; display: block; margin: 0 auto;">`,
